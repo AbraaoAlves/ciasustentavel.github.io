@@ -5,14 +5,14 @@ require("shelljs/global");
 
 gulp.task("urlDev", function() {
     gulp.src("index.html", { base: './'})
-	    .pipe(replace("ciasustentavel.com.br", "localhost:8080"))
+	    .pipe(replace("ciasustentavel.github.io", "localhost:8080"))
 	    .pipe(gulp.dest("./"));
 });
 
 gulp.task("urlProduction", function() {
     console.log("opa nenem");
     gulp.src("index.html", { base: './' })
-    	.pipe(replace("localhost:8080", "ciasustentavel.com.br"))
+    	.pipe(replace("localhost:8080", "ciasustentavel.github.io"))
     	.pipe(gulp.dest("./"));
 });
 
@@ -20,14 +20,6 @@ gulp.task("set-prod", ["urlProduction"]);
 gulp.task("set-dev", ["urlDev"]);
 
 gulp.task("deploy", ["set-prod"], function  (done) {
-	
-	exec("git add . --all ");
-	exec("git commit -am '[deploy] Auto-commit'");
-
-	var res = exec("git push origin master");
-	
-	if(res.code !== 0) {
-		echo("deploy failed. ");
-		exit(1);
-	}	
+	exec('git commit -am "[auto] change code to production"');
+	exec("git push origin master");
 });
