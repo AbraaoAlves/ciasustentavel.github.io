@@ -64,12 +64,7 @@ body.open {
   margin: 0 auto;
 }
 
-.app-bar.open,
-.app-bar.open ~ main {
-  -webkit-transform: translate(250px, 0);
-          transform: translate(250px, 0);
-}
-
+  
 .app-bar .logo {
   -webkit-flex: 1;
       -ms-flex: 1;
@@ -153,16 +148,17 @@ ol {
 }
 
 .navdrawer-container {
-  z-index: 1;
+  z-index: 2;
   position: fixed;
-  top: 0;
+  top: 60px;
   bottom: 0;
+  right: 0;
   width: 250px;
   height: 100%;
   background-color:  $colorLayoutsSecondary;
   color: #fefefe;
-  -webkit-transform: translate(-250px, 0);
-          transform: translate(-250px, 0);
+  -webkit-transform: translate(250px, 0);
+          transform: translate(250px, 0);
   overflow-y: auto;
 }
 

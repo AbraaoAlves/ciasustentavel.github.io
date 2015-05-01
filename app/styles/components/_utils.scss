@@ -48,7 +48,7 @@
 
 //  $colorLayouts:#2c8566 !default;
   $colorLayouts: $colorGreen !default;
-  $colorLayoutsSecondary: lighten($colorLayouts, 30%) !default;
+  $colorLayoutsSecondary: lighten($colorLayouts, 10%) !default;
   $colorUser:  #297ea9 !default;
   $colorUserSecondary: lighten($colorUser, 30%) !default;
   $colorMedia: #cf423a !default;
