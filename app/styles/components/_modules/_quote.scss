@@ -13,7 +13,7 @@
 
   @include medium {
     padding-top: $lineHeight * 2;
-    padding-left: 0;
+    padding-left: $lineHeight * 5;
   }
 
   p {
@@ -37,8 +37,8 @@
 
     @include medium {
       top: 225px;
-      left: -210px;
-      font-size: 540px;
+      left: -14px;
+      font-size: 500px;
     }
   }
 }
