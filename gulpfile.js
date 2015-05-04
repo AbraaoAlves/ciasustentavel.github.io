@@ -62,14 +62,20 @@ gulp.task('fonts', function () {
 
 // Compile and automatically prefix stylesheets
 gulp.task('styles', function () {
+// For best performance, don't add Sass partials to `gulp.src`
+//  return gulp.src([
+//    'app/styles/*.scss',
+//    'app/styles/**/*.scss',
+//    'app/styles/components/components.scss'
+//  ])
   return gulp.src('app/styles/**/*.scss')
     .pipe($.sourcemaps.init())
+    //.pipe($.changed('.tmp/styles', {extension: '.css'}))
     .pipe($.sass({
       precision: 10,
       includePaths:['app/styles/'],
       onError: console.error.bind(console, 'Sass error:')
     }))
-    .pipe($.changed('.tmp/styles', {extension: '.css'}))
     .pipe($.autoprefixer({browsers: AUTOPREFIXER_BROWSERS}))
     .pipe($.sourcemaps.write())
     .pipe(gulp.dest('.tmp/styles'))
@@ -133,7 +139,7 @@ gulp.task('serve', ['styles'], function () {
 
   gulp.watch(['app/**/*.html'], reload);
   gulp.watch(['app/styles/**/*.{scss,css}'], ['styles', reload]);
-  gulp.watch(['app/scripts/**/*.js'], ['jshint']);
+  gulp.watch(['app/scripts/**/*.ts'], ['script-compile:dev']);
   gulp.watch(['app/images/**/*'], reload);
 });
 
@@ -152,7 +158,7 @@ gulp.task('serve:dist', ['default'], function () {
 
 // Build production files, the default task
 gulp.task('default', ['clean'], function (cb) {
-  runSequence('styles', ['jshint', 'html', 'images', 'fonts', 'copy'], cb);
+  runSequence('styles', ['script-compile', 'html', 'images', 'fonts', 'copy'], cb);
 });
 
 // Run PageSpeed Insights
