@@ -62,18 +62,14 @@ gulp.task('fonts', function () {
 
 // Compile and automatically prefix stylesheets
 gulp.task('styles', function () {
-  // For best performance, don't add Sass partials to `gulp.src`
-  return gulp.src([
-    'app/styles/*.scss',
-    'app/styles/**/*.css',
-    'app/styles/components/components.scss'
-  ])
+  return gulp.src('app/styles/**/*.scss')
     .pipe($.sourcemaps.init())
-    .pipe($.changed('.tmp/styles', {extension: '.css'}))
     .pipe($.sass({
       precision: 10,
+      includePaths:['app/styles/'],
       onError: console.error.bind(console, 'Sass error:')
     }))
+    .pipe($.changed('.tmp/styles', {extension: '.css'}))
     .pipe($.autoprefixer({browsers: AUTOPREFIXER_BROWSERS}))
     .pipe($.sourcemaps.write())
     .pipe(gulp.dest('.tmp/styles'))
