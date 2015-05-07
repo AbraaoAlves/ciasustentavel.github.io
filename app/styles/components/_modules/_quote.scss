@@ -23,12 +23,11 @@
     margin-top: $lineHeight/2 - 1;
     padding-top: $lineHeight/2;
   }
-
-  &::before {
+  
+  .profile:first {
     content: open-quote;
     display: block;
     position: absolute;
-    font-family: $fontHighlight;
     font-weight: 700;
     color: $colorGrayBackground;
     top: 90px;
