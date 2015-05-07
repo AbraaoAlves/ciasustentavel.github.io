@@ -15,6 +15,7 @@
     navdrawerContainer.classList.remove('open');
   }
 
+
   function toggleMenu() {
     body.classList.toggle('open');
     appbarElement.classList.toggle('open');
