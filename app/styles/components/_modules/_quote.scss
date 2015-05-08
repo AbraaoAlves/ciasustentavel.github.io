@@ -38,5 +38,69 @@
     margin-top: $lineHeight/2 - 1;
     padding-top: $lineHeight/2;
   }
+}
+
+.depoimentos {
   
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+
+  figure {
+    border: 1px solid #333;
+    position: relative;
+    font-size: 0;
+    margin: 2% 0;
+    flex: 0 0 98%;
+    
+    @include medium {
+      flex: 0 0 48%;
+    }
+
+    @include wide {
+      flex: 0 0 24%;
+    }
+    
+    &:nth-child(even){ 
+      img{
+        float: right; 
+      }
+      figcaption{
+        left: 4%; 
+        right: auto; 
+        text-align: left;
+        p {
+          text-align: left;
+        }  
+      }
+    }
+    
+    img {
+      width: 20%; 
+      height: 68px; 
+      //max-height: 68px; 
+//      margin-top: -2rem;
+    }
+    
+    figcaption {
+      position: absolute; 
+      right: 4%;
+      top: -30%;
+      text-transform: uppercase;
+      text-align: right;
+      width: 75%;
+      
+      @include type--large;
+      @include medium {
+        @include type--medium;
+      }
+
+      p {
+          text-transform: none;
+          border-top: 1px solid $colorGrayKeyline;
+          font-weight: 500;
+          padding-top:0;
+      }
+    }
+  }
 }

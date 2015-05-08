@@ -3,12 +3,12 @@
 (function(){
 	"use strict";
 	
-	var options:FlexSliderOptions = {
-		animation:"slide",
-		minItems: 2,
-		maxItems: 3,		
-		slideshow:false
-	};
-	
-	$(".flexslider").flexslider(options);
+//	var options:FlexSliderOptions = {
+//		animation:"slide",
+//		minItems: 2,
+//		maxItems: 3,		
+//		slideshow:false
+//	};
+//	
+//	$(".flexslider").flexslider(options);
 })();
