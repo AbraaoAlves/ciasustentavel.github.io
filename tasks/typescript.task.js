@@ -18,7 +18,7 @@ gulp.task('lib-compile', function(){
       .pipe(concat('thirdparty.js'))
       .pipe(gulpIf(!deploy, uglify())) 
       .pipe(gulpIf(!deploy, sourcemaps.write('./')))
-      .pipe(gulp.dest('./app/scripts'));
+      .pipe(gulp.dest('./app/scripts/js'));
 });
 
 gulp.task('script-compile:dev', ['lib-compile'], function() {
@@ -34,7 +34,7 @@ gulp.task('script-compile:dev', ['lib-compile'], function() {
          .pipe(concat('main.js')) // You can use other plugins that also support gulp-sourcemaps
          .pipe(gulpIf(!deploy, uglify()))
          .pipe(gulpIf(!deploy, sourcemaps.write('./')))  
-         .pipe(gulp.dest('./app/scripts'));
+         .pipe(gulp.dest('./app/scripts/js'));
 });	
 
 gulp.task('script-compile', function (done) {
