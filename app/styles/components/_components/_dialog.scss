@@ -1,0 +1,39 @@
+@keyframes fadeToNearBlack{
+	to { background: rgba(0,0,0,0.9); }
+}
+@keyframes goBig { 
+	to { opacity: 1; } 
+}
+
+dialog {
+	 
+	position: fixed; 
+	left: 50%; 
+	top: 50%; 
+	transform: translate(-50%, -50%); 
+	border: none; 
+	opacity: 0;
+
+	&[open] {
+		animation: goBig 1s .4s forwards;
+		width: 70%; margin: auto;
+		max-width: 700px;
+		
+		&::backdrop { 
+			animation: fadeToNearBlack 1s infinite; 
+		}
+	}
+
+	.content {
+			
+	}
+	
+	button.close { 
+		border: none; 
+		background: none; 
+		@include type--base;
+	}
+	
+}
+
+.backdrop { animation: fadeToNearBlack 1s forwards; }

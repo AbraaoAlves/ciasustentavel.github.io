@@ -77,7 +77,9 @@
     
     img {
       width: 20%; 
-      height: 68px; 
+      height: 72px;
+      border: 2px solid #FFF; 
+      margin: 0 2px 0 2px;
       //max-height: 68px; 
 //      margin-top: -2rem;
     }
@@ -88,7 +90,7 @@
       top: -30%;
       text-transform: uppercase;
       text-align: right;
-      width: 75%;
+      width: 74%;
       
       @include type--large;
       @include medium {
@@ -100,6 +102,9 @@
           border-top: 1px solid $colorGrayKeyline;
           font-weight: 500;
           padding-top:0;
+      }
+      .content{
+        display: none;
       }
     }
   }
