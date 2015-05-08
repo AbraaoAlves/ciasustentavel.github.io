@@ -139,7 +139,7 @@ gulp.task('serve', ['styles'], function () {
 
   gulp.watch(['app/**/*.html'], reload);
   gulp.watch(['app/styles/**/*.{scss,css}'], ['styles', reload]);
-  gulp.watch(['app/scripts/**/*.ts'], ['script-compile:dev']);
+  gulp.watch(['app/scripts/**/*.ts'], ['script-compile:dev'], reload);
   gulp.watch(['app/images/**/*'], reload);
 });
 
