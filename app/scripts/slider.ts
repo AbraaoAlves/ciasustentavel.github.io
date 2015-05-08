@@ -4,8 +4,8 @@
 	"use strict";
 	
 	debugger;
-	alert("teste");
-	debugger;
+	alert("opa nenem doido");
+
 	$(".flexslider").flexslider({
 		animation:"fade",
 		animationLoop: false,
