@@ -11,25 +11,32 @@ declare var dialogPolyfill:any;
 (function() {
 	"use strict";
 
-	var links = document.querySelectorAll(".depoimentos a.showModal");
+	var links = document.querySelectorAll(".depoimentos figure");
 	var	dialog = <HTMLDialogElement>document.querySelector("dialog");
 	var	dialog_content = <HTMLElement>dialog.querySelector(".content");
 	
-	function showImage(e) {
-		var self = <HTMLElement>this;
-		e.preventDefault();
-		
-		var content = <HTMLElement>self.parentElement.querySelector(".content");
-		
-		dialog_content.innerHTML =  content.innerHTML;
+	function showDialog(e) {
+//		var self = <HTMLElement>this;
+//		e.preventDefault();
+//		
+//		var content = <HTMLElement>self.parentElement.querySelector(".content");
+//		
+//		dialog_content.innerHTML =  content.innerHTML;
 		dialog.showModal();
 	}
-	
-	dialog.querySelector("button.close").addEventListener("click", function() {
-		dialog_content.innerHTML = "";
+	function closeDialog(){
+//		dialog_content.innerHTML = "";
 		dialog.close();
-	});
+	}
 	
+	dialog.querySelector("button.close").addEventListener("click", closeDialog);
+	document.addEventListener("keydown", (e)=>{
+		if(e.keyCode === 27 && dialog.open){
+			//esc press with dialog opened
+			closeDialog();
+		}
+	});
+
 	var testdialog = <HTMLDialogElement>document.createElement("dialog");
 	testdialog.setAttribute("open", "");
 	
@@ -38,5 +45,5 @@ declare var dialogPolyfill:any;
 		dialogPolyfill.registerDialog(dialog); 
 	}
 	
-	for (var i = 0; i < links.length; i++) { links[i].addEventListener("click", showImage); }
+	for (var i = 0; i < links.length; i++) { links[i].addEventListener("click", showDialog); }
 })();

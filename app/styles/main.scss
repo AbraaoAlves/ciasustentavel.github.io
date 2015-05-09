@@ -12,9 +12,9 @@
  * Remove if you prefer to use a CSS library, like Bootstrap
  */
  
+@import 'dialog-polyfill';
 @import 'components/main-components';
 @import 'main-large';
-@import 'dialog-polyfill';
 
 html,
 body {
