@@ -34,6 +34,7 @@ declare var dialogPolyfill:any;
 	testdialog.setAttribute("open", "");
 	
 	if (!testdialog.open) { 
+		console.log("registrando dialog-polyfill")
 		dialogPolyfill.registerDialog(dialog); 
 	}
 	

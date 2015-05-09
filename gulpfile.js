@@ -60,7 +60,7 @@ gulp.task('styles', function () {
 //    'app/styles/components/components.scss'
 //  ])
   return gulp.src('app/styles/**/*.scss')
-    .pipe($.sourcemaps.init())
+    .pipe($.sourcemaps.init({loadMaps: true}))
     //.pipe($.changed('.tmp/styles', {extension: '.css'}))
     .pipe($.sass({
       precision: 10,
