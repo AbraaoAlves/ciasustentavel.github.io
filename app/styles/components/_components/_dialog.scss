@@ -6,6 +6,10 @@
 	to { opacity: 1; } 
 }
 
+body.dialog-open{
+	overflow: hidden;
+}
+
 dialog {
 	position: fixed; 
 	left: 50%; 
@@ -13,26 +17,53 @@ dialog {
 	transform: translate(-50%, -50%); 
 	border: none; 
 	opacity: 0;
+	overflow:hidden; 
+
+	@include small-only{
+		top: 55%; 
+	}
 
 	&[open] {
-		height: auto;
+		height: 90%;
 		animation: goBig 1s .4s forwards;
-		width: 70%; margin: auto;
-		max-width: 700px;
+		width: 90%; 
+		margin: auto;
+		max-width: 800px;
 		
 		&::backdrop { 
 			animation: fadeToNearBlack 1s forwards; 
 		}
-	}
-	
-	.dialog-body {
-		@include type--small;
-	}
-	
-	.close { 
-		border: none; 
-		background: none; 
-		@include type--base;
+		.close { 
+			float: right;
+			
+			margin-top:-15px;
+			margin-right: -15px;
+			z-index: 999999;
+			text-align:center;
+			padding: 10px;
+			
+//			font-size: 20px;
+			&:focus{
+				outline: 0;
+			}
+		}
+		.depoimentos {
+			position: fixed; 
+			top:30px;
+			background-color: white;
+			
+			figure {
+				margin: 2% 0;
+			}
+		}
+		.dialog-body {
+			@include type--small;
+			height: 90%;
+			overflow-x:hidden; 
+			overflow-y:auto;
+			margin-top:28%;
+			width: 100%; 
+		}
 	}
 }
 

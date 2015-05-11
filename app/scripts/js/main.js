@@ -1,2 +1,73 @@
-!function(){"use strict";function e(e){o.showModal()}function t(){o.close()}{var n=document.querySelectorAll(".depoimentos figure"),o=document.querySelector("dialog");o.querySelector(".content")}o.querySelector("button.close").addEventListener("click",t),document.addEventListener("keydown",function(e){27===e.keyCode&&o.open&&t()});var c=document.createElement("dialog");c.setAttribute("open",""),c.open||(console.log("registrando dialog-polyfill"),dialogPolyfill.registerDialog(o));for(var i=0;i<n.length;i++)n[i].addEventListener("click",e)}(),function(){"use strict";function e(){c.classList.remove("open"),i.classList.remove("open"),o.classList.remove("open")}function t(){c.classList.toggle("open"),i.classList.toggle("open"),o.classList.toggle("open"),o.classList.add("opened")}var n=document.querySelector.bind(document),o=n(".navdrawer-container"),c=document.body,i=n(".app-bar"),l=n(".menu"),r=n("main");r.addEventListener("click",e),l.addEventListener("click",t),o.addEventListener("click",function(t){("A"===t.target.nodeName||"LI"===t.target.nodeName)&&e()})}();
+(function () {
+    "use strict";
+    var links = document.querySelectorAll(".figure-list figure");
+    var dialog = document.querySelector("dialog");
+    var dialog_content = dialog.querySelector(".content");
+    var closeButton = dialog.querySelector(".close");
+    function onClick(el, handler) {
+        ["click"].forEach(function (e) { return el.addEventListener(e, handler); });
+    }
+    function showDialog(e) {
+        //		var self = <HTMLElement>this;
+        e.preventDefault();
+        //		
+        //		var content = <HTMLElement>self.parentElement.querySelector(".content");
+        //		
+        //		dialog_content.innerHTML =  content.innerHTML;
+        document.body.className = "dialog-open";
+        dialog.showModal();
+    }
+    function closeDialog(e) {
+        e.preventDefault();
+        //		dialog_content.innerHTML = "";
+        dialog.close();
+    }
+    function dialogSuported() {
+        var testdialog = document.createElement("dialog");
+        testdialog.setAttribute("open", "");
+        return testdialog.open;
+    }
+    onClick(closeButton, closeDialog);
+    document.addEventListener("keydown", function (e) {
+        if (e.keyCode === 27 && dialog.open) {
+            //esc press with dialog opened
+            closeDialog();
+        }
+    });
+    if (!dialogSuported()) {
+        dialogPolyfill.registerDialog(dialog);
+    }
+    for (var i = 0; i < links.length; i++) {
+        onClick(links[i], showDialog);
+    }
+})();
+
+(function () {
+    'use strict';
+    var querySelector = document.querySelector.bind(document);
+    var navdrawerContainer = querySelector('.navdrawer-container');
+    var body = document.body;
+    var appbarElement = querySelector('.app-bar');
+    var menuBtn = querySelector('.menu');
+    var main = querySelector('main');
+    function closeMenu() {
+        body.classList.remove('open');
+        appbarElement.classList.remove('open');
+        navdrawerContainer.classList.remove('open');
+    }
+    function toggleMenu() {
+        body.classList.toggle('open');
+        appbarElement.classList.toggle('open');
+        navdrawerContainer.classList.toggle('open');
+        navdrawerContainer.classList.add('opened');
+    }
+    main.addEventListener('click', closeMenu);
+    menuBtn.addEventListener('click', toggleMenu);
+    navdrawerContainer.addEventListener('click', function (event) {
+        if (event.target.nodeName === 'A' || event.target.nodeName === 'LI') {
+            closeMenu();
+        }
+    });
+})();
+
 //# sourceMappingURL=main.js.map

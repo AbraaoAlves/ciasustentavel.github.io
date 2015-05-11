@@ -11,14 +11,14 @@ var gulpIf = require('gulp-if');
 var deploy = false;
 gulp.task('lib-compile', function(){
      return gulp.src([
-         'app/scripts/libs/jquery.flexslider.js'
+         'app/scripts/libs/*.js'
       ])
       .pipe(changed('app/scripts/js', {extension: '.js'}))
       .pipe(gulpIf(!deploy, sourcemaps.init({loadMaps: true})))
       .pipe(concat('thirdparty.js'))
-      .pipe(gulpIf(!deploy, uglify())) 
+      .pipe(gulpIf(deploy, uglify({preserveComments: 'some'}))) 
       .pipe(gulpIf(!deploy, sourcemaps.write('./')))
-      .pipe(gulp.dest('./app/scripts/js'));
+      .pipe(gulp.dest(deploy ? 'dist/scripts/js':'./app/scripts/js'));
 });
 
 gulp.task('script-compile:dev', ['lib-compile'], function() {
@@ -32,9 +32,9 @@ gulp.task('script-compile:dev', ['lib-compile'], function() {
 
       return tsResult.js
          .pipe(concat('main.js')) // You can use other plugins that also support gulp-sourcemaps
-         .pipe(gulpIf(!deploy, uglify()))
+         .pipe(gulpIf(deploy, uglify()))
          .pipe(gulpIf(!deploy, sourcemaps.write('./')))  
-         .pipe(gulp.dest('./app/scripts/js'));
+         .pipe(gulp.dest(deploy ? 'dist/scripts/js':'./app/scripts/js'));
 });	
 
 gulp.task('script-compile', function (done) {
