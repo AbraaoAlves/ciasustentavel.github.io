@@ -44,18 +44,18 @@ declare var dialogPolyfill:any;
 		return testdialog.open;
 	}
 	
-	onClick(closeButton, closeDialog);
-	
-	document.addEventListener("keydown", (e)=>{
-		if(e.keyCode === 27 && dialog.open){
-			//esc press with dialog opened
-			closeDialog();
-		}
-	});
-	
-	if(!dialogSuported()){ 
-		dialogPolyfill.registerDialog(dialog); 
-	}		
-	
-	for (var i = 0; i < links.length; i++) { onClick(<HTMLElement>links[i], showDialog); }
+//	onClick(closeButton, closeDialog);
+//	
+//	document.addEventListener("keydown", (e)=>{
+//		if(e.keyCode === 27 && dialog.open){
+//			//esc press with dialog opened
+//			closeDialog();
+//		}
+//	});
+//	
+//	if(!dialogSuported()){ 
+//		dialogPolyfill.registerDialog(dialog); 
+//	}		
+//	
+//	for (var i = 0; i < links.length; i++) { onClick(<HTMLElement>links[i], showDialog); }
 })();

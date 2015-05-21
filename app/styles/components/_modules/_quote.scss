@@ -52,7 +52,8 @@
     font-size: 0;
     margin: 8% 0;
     flex: 0 0 98%;
-    
+    cursor: pointer;
+        
     @include medium {
       flex: 0 0 48%;
     }
@@ -60,6 +61,17 @@
     @include wide {
       flex: 0 0 24%;
     }
+    
+    &:hover{
+			background: #444;
+
+      img{
+        transform: scale(1.1);
+      }
+      figcaption {
+        color: $colorLayoutsSecondary;
+      }
+    } 
     
     &:nth-child(even){ 
       img{
