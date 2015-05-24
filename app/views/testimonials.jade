@@ -1,0 +1,52 @@
+- var testimonials = [];
+- testimonials.push({name:'Marcio_Rios'            , title:'GbFor CEO', text:'CEO Gbfor and Founder, Engenheiro Civil e Professor na UNIFOR'});
+- testimonials.push({name:'Roberto_A_Rosa'         , title:'B & R Advogados.', text:'Sócio-diretor do escritório Bueno & Rosa Advogados Associados'});
+- testimonials.push({name:'Regis_Gomes'            , title:'Property Management', text:'Facility e Property Management'});
+- testimonials.push({name:'Marlete_H'              , title:'Gestora Hospitalar', text:'Gestora Hospitalar (Rio Grande do Sul - Fortaleza)'});
+- testimonials.push({name:'Isabella_Mattos'        , title:'COBIO', text:'Coordenadoria de Biodiversidade - COBIO'});
+- testimonials.push({name:'Fabio_de_Almeida_Pinto' , title:'Sustainable Carbon', text:'Analista Comercial - Sustainable Carbon'});
+- testimonials.push({name:'Eliana_Sader'           , title:'Diretora da SADER', text:'Sócia Diretora da SADER- Consultoria em Psicologia Organizacional'});
+- testimonials.push({name:'Diarley_Almeida'        , title:'Coordenador na SEPLAG', text:'Coordenador de Recursos Logísticos e de Patrimônio do Estado do Ceará, na Secretaria do Planejamento e Gestão – SEPLAG e Consultor de Empresas nas áreas de Planejamento Estratégico, Comercial'});
+- testimonials.push({name:'Billy_Saga'             , title:'Presidente SuperAção', text:'Presidente, Movimento SuperAção'});
+
+mixin profileImg(name, text)
+  - var iniciais = name[0].toUpperCase() + (name.split('_')[1])[0].toUpperCase(); 
+  img.info-player__num(src='images/profiles/'+name+'.jpg', alt=iniciais, title=text)
+
+.view
+  h2.subsection-title
+    strong #
+    | Depoimentos
+  br.clear
+  .card__texts
+    .text(data-name='Marcio_Rios1'): include:markdown testimonials/Marcio_Rios.md
+    .text(data-name='Roberto_A_Rosa'): include:markdown testimonials/Roberto_A_Rosa.md
+    .text(data-name='Regis_Gomes'): include:markdown testimonials/Regis_Gomes.md
+    .text(data-name='Marlete_H'): include:markdown testimonials/Marlete_H.md
+    .text(data-name='Isabella_Mattos'): include:markdown testimonials/Isabella_Mattos.md
+    .text(data-name='Fabio_de_Almeida_Pinto'): include:markdown testimonials/Fabio_de_Almeida_Pinto.md
+    .text(data-name='Eliana_Sader'): include:markdown testimonials/Eliana_Sader.md
+    .text(data-name='Diarley_Almeida'): include:markdown testimonials/Diarley_Almeida.md
+    .text(data-name='Billy_Saga'): include:markdown testimonials/Billy_Saga.md
+
+  .card__full
+    .card__full-top
+      svg(xmlns='http://www.w3.org/2000/svg', viewbox='0 0 24 24')
+        path(d='M16.59 8.59l-4.59 4.58-4.59-4.58-1.41 1.41 6 6 6-6z')
+        path(d='M0 0h24v24h-24z', fill='none')
+      span.card__full-num
+    .card__full-bottom
+      p.card__full-handle
+      p.card__full-info
+
+  .card__list
+    each testimony in testimonials
+     .card__item
+        .card__info
+          .info-player
+            +profileImg(testimony.name, testimony.text)
+            
+            p.info-player__name
+              small #{testimony.name.replace(/_/g, ' ')}
+              br
+              | #{testimony.title}

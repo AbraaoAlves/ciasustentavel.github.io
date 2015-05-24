@@ -5,7 +5,7 @@ var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
 var del = require('del');
 var runSequence = require('run-sequence');
-var browserSync = require('browser-sync');
+var browserSync = require('browser-sync').create('wsk');
 var pagespeed = require('psi');
 var reload = browserSync.reload;
 
@@ -116,8 +116,8 @@ gulp.task('html', function () {
 gulp.task('clean', del.bind(null, ['.tmp', 'dist/*', '!dist/.git'], {dot: true}));
 
 // Watch files for changes & reload
-gulp.task('serve', ['styles', 'script-compile:dev'], function () {
-  browserSync({
+gulp.task('serve', ['jade','styles','script-compile:dev'], function () {
+  browserSync.init({
     notify: false,
     // Customize the BrowserSync console logging prefix
     logPrefix: 'WSK',
@@ -128,7 +128,7 @@ gulp.task('serve', ['styles', 'script-compile:dev'], function () {
     server: ['.tmp', 'app']
   });
 
-  gulp.watch(['app/**/*.html'], reload);
+  gulp.watch(['app/**/*.{jade,md}'], ['jade', reload]);
   gulp.watch(['app/styles/**/*.{scss,css}'], ['styles', reload]);
   gulp.watch(['app/scripts/**/*.ts'], ['script-compile:dev', reload]);
   gulp.watch(['app/images/**/*'], reload);
@@ -136,7 +136,7 @@ gulp.task('serve', ['styles', 'script-compile:dev'], function () {
 
 // Build and serve the output from the dist build
 gulp.task('serve:dist', ['default'], function () {
-  browserSync({
+  browserSync.init({
     notify: false,
     logPrefix: 'WSK',
     // Run as an https by uncommenting 'https: true'
@@ -149,7 +149,7 @@ gulp.task('serve:dist', ['default'], function () {
 
 // Build production files, the default task
 gulp.task('default', ['clean'], function (cb) {
-  runSequence('styles', ['script-compile', 'html', 'images', 'fonts', 'copy'], cb);
+  runSequence(['styles', 'script-compile', 'jade'], ['html', 'images', 'fonts', 'copy'], cb);
 });
 
 // Run PageSpeed Insights
