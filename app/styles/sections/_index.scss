@@ -1,0 +1,18 @@
+
+.index {
+	text-transform: uppercase;
+	font-size: bold;
+	
+	padding: 0 16px;
+	margin-bottom: -50px; 
+	
+	color: white;
+	.button{
+		color: $colorLayoutsSecondary;
+		background: $colorGrayBackground;
+	}
+	
+	@include medium {
+		margin-bottom: 330px;		
+	}
+}

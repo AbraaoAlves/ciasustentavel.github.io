@@ -2,36 +2,23 @@ $space: 1.5rem;
 $grey: lighten(black, 25);
 $blue: #5171C3;
 $orange: #DE660F;
-$green: #2EA83B;
+$green: $colorLayouts;
+$greenLigth: $colorLayoutsSecondary;
 $yellow: #BDB235;
 $tan: #AA9E5C;
 $purple: #3E5EB3;
-$ease: all .5s cubic-bezier(0.23, 1, 0.32, 1);
-
-@function longshadow($color_a,$color_b,$stepnum, $opacity: 1) {
-	$gradient_steps: null;
-	@for $i from 1 through $stepnum {
-		$weight: ( ( $i - 1 ) / $stepnum ) * 100;
-		$colour_mix: mix($color_b, rgba($color_a, $opacity), $weight);
-		$seperator: null;
-		@if($i != $stepnum){ 
-			$seperator: #{','}; 
-		}
-		$gradient_steps: append( #{$gradient_steps}, #{$i}px #{$i}px $colour_mix $seperator );
- }
-  @return $gradient_steps;
-}
+$ease: all .8s cubic-bezier(0.23, 1, 0.32, 1);
 
 %cardItemColors {
 	border-top-color: $green;
 	p.info-player__num { 
 		background: $green;
-		text-shadow: longshadow(darken($green, 15%),$green,20, 0.7);
 	}
 	&:hover {
 		.info-player__name,
 		.info-place {
 			color: $green;
+			font-weight: bold;
 		}
 	}
 	
@@ -44,20 +31,37 @@ $ease: all .5s cubic-bezier(0.23, 1, 0.32, 1);
 	}
 }
 
+%connections {
+	background: {
+		image: url(../images/background/mesh-white.svg);
+		repeat: no-repeat;
+		position-x: -15px;
+		position-y: 0;
+		size: 900px auto; 		 
+	}
+}
+
+%profileImage {
+	line-height: 36px;
+	padding: 0;
+	margin: 0 $space / 2 0 0;
+	border:2px solid $green;
+	text-align: center;
+	background: silver;
+	border-radius: 50%;
+	font-size: 24px;
+	color: white;
+	overflow: hidden;
+	transition: $ease;
+}
+
 section.testimonials {
-//	display: flex;
-//	align-items: center;
-//	justify-content: center;
 	line-height: 1.5;
-	font-family: 'Roboto';
 	background: darken(white, 5);
 	color: $grey;
 
 	.view {
-//		position: relative;
-//		width: 98%;
-		background: darken(white, 1);
-//		box-shadow: 0 3px 6px rgba(black,0.16), 0 3px 6px rgba(black,0.23);
+		@extend %connections;
 	}
 	
 	.card {
@@ -71,7 +75,7 @@ section.testimonials {
 		
 		&__item {
 			margin: 0 0 $space / 2;
-			padding: $space*1.5 $space;
+			padding: $space;
 			border-top: 4px solid $green;
 			box-shadow: 0 1px 3px rgba(black,.12), 0 1px 2px rgba(black,0.24);
 			background: white;
@@ -105,17 +109,7 @@ section.testimonials {
 				&__num {
 					width: 60px;
 					height: 60px;
-					line-height: 36px;
-					padding: 0;
-					margin: 0 $space / 2 0 0;
-					border:2px solid $green;
-					text-align: center;
-					background: silver;
-					border-radius: 50%;
-					font-size: 24px;
-					color: white;
-					overflow: hidden;
-					transition: $ease;
+					@extend %profileImage;
 				}
 				
 				&__name {
@@ -141,35 +135,65 @@ section.testimonials {
 			top: 50%;
 			left: 50%;
 			width: 100%;
+			max-height: 640px;
 			height: 640px;
+			
+			min-height: 320px;
+			
 			z-index: 2;
 			visibility: hidden;
-			transform-origin: top center;
-			transform: scaleY(0) translate(-50%, -50%);
 			transition: $ease;
 			
+			transform-origin: top center;
+			transform: scaleY(0) translate(-50%, -50%);
+			@include medium {
+				flex-flow: row-reverse wrap;
+				transform-origin: left center;
+				transform: scaleX(0) translate(-50%, -50%);
+			}
+			
 			&.active {
-				visibility: visible;
 				transform: scaleY(1) translate(-50%, -50%);
+				@include medium{
+					transform: scaleX(1) translate(-50%, -50%);
+				}	
+				
+				visibility: visible;
 				
 				.card__full-num,
 				.card__full-handle,
 				.card__full-info {
 					opacity: 1;
 				}
+				
+				.card__full-info{
+					padding-top: 0;
+					
+					@include medium {
+						padding-top: 1.65em;
+					}	
+				}
 			}
 			
-			&-top, 
-			&-bottom {
+			&-top{
 				flex: 1;
+			} 
+			&-bottom {
+				flex: 3;
 			}
 			
 			&-bottom {
 				display: flex;
 				justify-content: center;
 				flex-flow: column wrap;
-				padding: 0 $space * 2;
-				background: white;
+				padding: 0 $space;
+				background-color: $grey;
+				overflow-y: auto;
+				margin-bottom: -15px; 
+				
+				@include medium {
+					text-align: right;
+				}
 			}
 			
 			&-top {
@@ -177,20 +201,26 @@ section.testimonials {
 				display: flex;
 				align-items: center;
 				justify-content: center;
-				background: $blue;
+				background: $greenLigth;
 				overflow: hidden;
 				
+				@include medium {
+					padding: 0 10px;
+					flex-flow: column wrap;
+				}
+				
 				svg {
-					position: absolute;
+					position: fixed;
 					top: $space;
-					left: $space;
+					right: $space;
 					fill: rgba(black, 0.4);
-					width: 32px;
+					width: 45px;
 					cursor: pointer;
 					transition: $ease;
 					
 					&:hover {
 						fill: rgba(black, 0.7);
+						width: 52px; 
 					}
 				}
 			}
@@ -201,12 +231,36 @@ section.testimonials {
 				opacity: 0;
 				transition: $ease;
 				transition-duration: 2s;
-				transition-delay: .35s;
+				transition-delay: .45s;
 			}
 			
 			&-num {
 				color: white;
 				font-size: 140px;
+				@extend %profileImage;
+				border:2px solid white;
+				
+				@include small-only{
+					width: 20%;
+				}
+				
+				img {
+					@include medium{
+						height: 200px;
+						width:  200px;
+					}
+				}
+				+.card__full-title{
+					color:white;
+					
+					@include small-only{
+						width: 60%;
+						
+						h2, h3{
+							padding-top:0; 
+						}
+					}
+				}
 			}
 			
 			&-handle {
@@ -217,7 +271,7 @@ section.testimonials {
 			&-info {
 				margin: 0;
 				font-size: 20px;
-				color: $grey;
+				color: white;
 			}
 		}
 	}

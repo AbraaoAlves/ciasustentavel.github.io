@@ -6,26 +6,19 @@ html(lang='pt-br')
     meta(name='description', content='CiaSustentavel: Nosso site oficial oferece acesso as novidades e ultimas noticias sobre sustentabilidade. Aqui você pode entender um pouco mais sobre como a CiaSustentavel trabalha a colaboração nos servicços de consultoria, mentoria, coaching e gestão de inovação oferecidos aos nossos parceiros de negócio.')
     meta(name='keywords', content='christie cia sustentável,cia sustentável,cia sustentável fortaleza,sustentabilidade,cia,sustentabilidade fortaleza, cia sustentabilidade,sustentabilidade ceará,empresa sustentável,mais sustentabilidade,brasil sustentável')
     meta(name='viewport', content='width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=4')
+    meta(name='MobileOptimized', content="320")
     title Cia. Sustentável
     // Add to homescreen 2
     link(rel='manifest', href='manifest.json')
-    // Fallback to homescreen for Chrome <39 on Android
-    meta(name='mobile-web-app-capable', content='yes')
-    meta(name='application-name', content='Web Starter Kit')
-    link(rel='icon', sizes='192x192', href='images/touch/chrome-touch-icon-192x192.png')
-    // Add to homescreen for Safari on iOS
-    meta(name='apple-mobile-web-app-capable', content='yes')
-    meta(name='apple-mobile-web-app-status-bar-style', content='black')
-    meta(name='apple-mobile-web-app-title', content='Web Starter Kit')
-    link(rel='apple-touch-icon', href='images/touch/apple-touch-icon.png')
-    // Tile icon for Win8 (144x144 + tile color)
-    meta(name='msapplication-TileImage', content='images/touch/ms-touch-icon-144x144-precomposed.png')
-    meta(name='msapplication-TileColor', content='#3372DF')
-    meta(name='theme-color', content='#3372DF')
+    
+    include ./views/includeIcons.jade
+    
     // Page styles
     link(rel='stylesheet', href='styles/main.css')
     script(src='http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js')
   body
+    include ./views/imgSlide.jade
+    
     header.app-bar.promote-layer
       .app-bar-container
         h1.logo
@@ -52,13 +45,9 @@ html(lang='pt-br')
       section.index
         h1
           | Soluções
-          strong Colaborativas
-        p Mais do que consultoria e inovação. CiaSustentavél trabalha com parceria
-        br
-        br
-        br
-        .inverted-block
-          a.button--secondary-variation(href='/#about') Sobre nós
+          strong  Colaborativas
+        h4 Mais do que consultoria e inovação. CiaSustentavél trabalha com parceria
+        a.button--secondary-variation(href='/#about') Sobre nós
       
       section.testimonials
         include ./views/testimonials.jade

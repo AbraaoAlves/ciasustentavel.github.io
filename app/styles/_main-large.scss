@@ -1,4 +1,6 @@
 /** Larger Screens - desktops and tablets **/
+$largura: 1140px;
+
 @media all and (min-width: 990px) {
   .app-bar {
     position: relative;
@@ -13,10 +15,10 @@
   .app-bar-container {
     display: block;
     height: 130px;
-    max-width: 1140px;
+    max-width: $largura;
     padding: 0 16px;
     box-sizing: border-box;
-    background-color:$colorLayoutsSecondary;
+//    background-color:$colorLayoutsSecondary;
   }
 
   .app-bar .logo {
@@ -75,11 +77,18 @@
   }
 
   main {
-    max-width: 1140px;
     padding-top: 0;
     min-height: initial;
+    
+    section{
+      padding: 0 16px;
+    }
   }
-
+  
+  header{
+    max-width: $largura;
+  }
+  
   body {
     overflow-y: scroll;
   }

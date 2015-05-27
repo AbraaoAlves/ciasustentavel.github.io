@@ -1,5 +1,6 @@
 /// <reference path="../typings/tsd.d.ts" />
 var Cards = (function () {
+    'use strict';
     var view = $('.view');
     var vw = view.innerWidth();
     var vh = view.innerHeight();
@@ -9,57 +10,29 @@ var Cards = (function () {
     var cardfulltop = cardfull.find('.card__full-top');
     var arrow = cardfulltop.find('svg');
     var cardnum = cardfulltop.find('.card__full-num');
+    var cardtitle = cardfulltop.find('.card__full-title');
     var cardhandle = cardfull.find('.card__full-handle');
     var cardinfo = cardfull.find('.card__full-info');
     var w = $(window);
-    var data = [
-        {
-            num: 9,
-            handle: '@tonyromo',
-            info: 'This is some info about the player and sports. This is some info about the player and sports. This is some info about the player and sports. This is some info about the player and sports. This is some info about the player and sports. This is some info about the player and sports. This is some info about the player and sports. This is some info about the player and sports. This is some info about the player and sports. This is some info about the player and sports. This is some info about the player and sports. This is some info about the player and sports. This is some info about the player and sports. This is some info about the player and sports. This is some info about the player and sports. This is some info about the player and sports. This is some info about the player and sports. This is some info about the player and sports. This is some info about the player and sports. This is some info about the player and sports.This is some info about the player and sports. This is some info about the player and sports. This is some info about the player and sports. This is some info about the player and sports. This is some info about the player and sports. This is some info about the player and sports. This is some info about the player and sports. This is some info about the player and sports. This is some info about the player and sports. This is some info about the player and sports.'
-        },
-        {
-            num: 18,
-            handle: '@tombrady',
-            info: 'This is some info about the player and sports.'
-        },
-        {
-            num: 12,
-            handle: '@aaronrogers',
-            info: 'This is some info about the player and sports.'
-        },
-        {
-            num: 7,
-            handle: '@benroethlisberger',
-            info: 'This is some info about the player and sports.'
-        },
-        {
-            num: 9,
-            handle: '@drewbrees',
-            info: 'This is some info about the player and sports.'
-        },
-        {
-            num: 18,
-            handle: '@peytonmanning',
-            info: 'This is some info about the player and sports.'
-        }
-    ];
     var moveCard = function () {
         var self = $(this);
         var selfIndex = self.index();
         var selfO = self.offset();
         var ty = w.innerHeight() / 2 - selfO.top - 4;
         var color = self.css('border-top-color');
-        cardfulltop.css('background-color', color);
-        cardhandle.css('color', color);
-        updateData(selfIndex);
-        self.css({
-            'transform': 'translateY(' + ty + 'px)'
-        });
-        self.on('transitionend', function () {
-            cardfull.addClass('active');
-            self.off('transitionend');
-        });
+        //		cardfulltop.css('background-color', color);
+        //		cardhandle.css('color', color);
+        updateData(selfIndex, self.data('name'));
+        setTimeout(function () { return cardfull.css('height', w.outerHeight()) && cardfull.addClass('active'); }, 500);
+        //TODO: move center
+        //		self.css({
+        //			'transform': 'translateY(' + ty + 'px)'
+        //		});
+        //				
+        //		self.on('transitionend', function() {
+        //			cardfull.addClass('active');
+        //			self.off('transitionend');
+        //		});
         return false;
     };
     var closeCard = function () {
@@ -75,14 +48,21 @@ var Cards = (function () {
             cardfull.off('transitionend');
         });
     };
-    var updateData = function (index) {
-        cardnum.text(data[index].num);
-        cardhandle.text(data[index].handle);
-        cardinfo.text(data[index].info);
+    var updateData = function (index, name) {
+        var img = $('img[src*="' + name + '.jpg"]', '.card__list').clone();
+        var text = $('[data-name="' + name + '"]', '.card__texts').clone();
+        cardnum.html('').append(img);
+        cardinfo.html('').append(text);
+        cardtitle.html('')
+            .append($('<h2>').text(name.replace(/_/g, ' ')))
+            .append($('<hr>'))
+            .append($('<h3>').text(img.attr('title')));
     };
     var bindActions = function () {
+        var escape = 27;
         card.on('click', moveCard);
         arrow.on('click', closeCard);
+        w.on('keydown', function (e) { return e.keyCode === escape && cardfull.hasClass('active') && closeCard(); });
     };
     var init = function () {
         bindActions();
@@ -182,5 +162,15 @@ Cards.init();
         }
     });
 })();
+
+/// <reference path="../typings/tsd.d.ts" />
+$(function () {
+    'use strict';
+    $('.flexslider').flexslider({
+        selector: '.slides > div',
+        directionNav: false,
+        controlNav: false
+    });
+});
 
 //# sourceMappingURL=main.js.map

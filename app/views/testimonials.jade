@@ -1,25 +1,28 @@
 - var testimonials = [];
-- testimonials.push({name:'Marcio_Rios'            , title:'GbFor CEO', text:'CEO Gbfor and Founder, Engenheiro Civil e Professor na UNIFOR'});
+- testimonials.push({name:'Marcio_Rios'            , title:'GbFor CEO', text:'GbFor CEO & Founder, Engenheiro Civil e Professor na UNIFOR'});
 - testimonials.push({name:'Roberto_A_Rosa'         , title:'B & R Advogados.', text:'Sócio-diretor do escritório Bueno & Rosa Advogados Associados'});
 - testimonials.push({name:'Regis_Gomes'            , title:'Property Management', text:'Facility e Property Management'});
 - testimonials.push({name:'Marlete_H'              , title:'Gestora Hospitalar', text:'Gestora Hospitalar (Rio Grande do Sul - Fortaleza)'});
-- testimonials.push({name:'Isabella_Mattos'        , title:'COBIO', text:'Coordenadoria de Biodiversidade - COBIO'});
+- testimonials.push({name:'Isabella_Mattos'        , title:'Coord. COBIO', text:'Coordenadoria de Biodiversidade - COBIO'});
 - testimonials.push({name:'Fabio_de_Almeida_Pinto' , title:'Sustainable Carbon', text:'Analista Comercial - Sustainable Carbon'});
 - testimonials.push({name:'Eliana_Sader'           , title:'Diretora da SADER', text:'Sócia Diretora da SADER- Consultoria em Psicologia Organizacional'});
-- testimonials.push({name:'Diarley_Almeida'        , title:'Coordenador na SEPLAG', text:'Coordenador de Recursos Logísticos e de Patrimônio do Estado do Ceará, na Secretaria do Planejamento e Gestão – SEPLAG e Consultor de Empresas nas áreas de Planejamento Estratégico, Comercial'});
-- testimonials.push({name:'Billy_Saga'             , title:'Presidente SuperAção', text:'Presidente, Movimento SuperAção'});
+- testimonials.push({name:'Diarley_Almeida'        , title:'Coordenador na SEPLAG', text:'Consultor Empresarial e Coord. de Recursos na SEPLAG'});//Secretaria do Planejamento e Gestão – nas áreas de Planejamento Estratégico, Comercial
+- testimonials.push({name:'Billy_Saga'             , title:'Presidente Mov. SuperAção', text:'Presidente, Movimento SuperAção'});
+- testimonials.push({name:'Andréia_Mello_Silva'    , title:'Coord. Consórcio UFN3', text:'Coord. de Comunicação e Responsabilidade Social no Consórcio UFN3'});
+- testimonials.push({name:'Adriana_Costa'          , title:'Jornalista (São Paulo)', text:'Jornalista (São Paulo - Fortaleza)'});
+- testimonials.push({name:'Ilmacir_Machado'       , title:'Admin. Pública DNOCS', text:'Administradora Pública no DNOCS. Líder Estadual do Inst. Entre Rodas & Batom'}); //Anfitriã no Ceará do Evento IntegralEntreTantos
 
 mixin profileImg(name, text)
   - var iniciais = name[0].toUpperCase() + (name.split('_')[1])[0].toUpperCase(); 
   img.info-player__num(src='images/profiles/'+name+'.jpg', alt=iniciais, title=text)
 
-.view
+.view.inverted-block
   h2.subsection-title
     strong #
     | Depoimentos
   br.clear
   .card__texts
-    .text(data-name='Marcio_Rios1'): include:markdown testimonials/Marcio_Rios.md
+    .text(data-name='Marcio_Rios'): include:markdown testimonials/Marcio_Rios.md
     .text(data-name='Roberto_A_Rosa'): include:markdown testimonials/Roberto_A_Rosa.md
     .text(data-name='Regis_Gomes'): include:markdown testimonials/Regis_Gomes.md
     .text(data-name='Marlete_H'): include:markdown testimonials/Marlete_H.md
@@ -28,20 +31,25 @@ mixin profileImg(name, text)
     .text(data-name='Eliana_Sader'): include:markdown testimonials/Eliana_Sader.md
     .text(data-name='Diarley_Almeida'): include:markdown testimonials/Diarley_Almeida.md
     .text(data-name='Billy_Saga'): include:markdown testimonials/Billy_Saga.md
+    .text(data-name='Andréia_Mello_Silva'): include:markdown testimonials/Andréia_Mello_Silva.md
+    .text(data-name='Adriana_Costa'): include:markdown testimonials/Adriana_Costa.md
+    .text(data-name='Ilmacir_Machado'): include:markdown testimonials/Ilmacir_Machado.md
 
   .card__full
     .card__full-top
-      svg(xmlns='http://www.w3.org/2000/svg', viewbox='0 0 24 24')
-        path(d='M16.59 8.59l-4.59 4.58-4.59-4.58-1.41 1.41 6 6 6-6z')
-        path(d='M0 0h24v24h-24z', fill='none')
       span.card__full-num
+      span.card__full-title
+      svg(xmlns='http://www.w3.org/2000/svg', viewbox='0 0 24 24')
+        polygon(style='fill-rule:evenodd;clip-rule:evenodd;', points='18.717,6.697 17.303,5.283 12,10.586 6.697,5.283    5.283,6.697 10.586,12 5.283,17.303 6.697,18.717 12,13.414 17.303,18.717 18.717,17.303 13.414,12   ')
+          title Clique ou pressione ESC para sair
+        path(d='M0 0h24v24h-24z', fill='none')
     .card__full-bottom
-      p.card__full-handle
+      //p.card__full-handle
       p.card__full-info
 
   .card__list
     each testimony in testimonials
-     .card__item
+     .card__item(data-name=testimony.name)
         .card__info
           .info-player
             +profileImg(testimony.name, testimony.text)
