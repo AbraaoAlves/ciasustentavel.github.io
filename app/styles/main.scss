@@ -16,7 +16,6 @@
  
 @import 'components/main-components';
 @import 'sections/main-sections';
-@import 'main-large';
 
 html,
 body {
@@ -28,7 +27,7 @@ body {
 
 body {
   position: relative;
-  font-family: 'Roboto Condensed', Helvetica, Arial, sans-serif;
+  font-family: 'Roboto', Helvetica, Arial, sans-serif;
   font-weight: 300;
   background-color: #fff;
   box-sizing: border-box;
@@ -157,11 +156,11 @@ ol {
   right: 0;
   width: 250px;
   height: 100%;
-//  background-color:  $colorLayoutsSecondary;
+//  background-color: $colorLayoutsSecondary;
   color: #fefefe;
   -webkit-transform: translate(250px, 0);
           transform: translate(250px, 0);
-  overflow-y: auto;
+//  overflow-y: auto;
 }
 
 .navdrawer-container.open {
@@ -234,3 +233,4 @@ main {
 //  min-height: 100%;
 }
 
+@import 'main-large';

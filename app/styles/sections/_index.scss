@@ -2,17 +2,17 @@
 .index {
 	text-transform: uppercase;
 	font-size: bold;
+	color: white;
 	
-	padding: 0 16px;
+	padding: 0 58px;
 	margin-bottom: -50px; 
 	
-	color: white;
+	@include medium {
+		margin-bottom: 230px;
+	}
 	.button{
 		color: $colorLayoutsSecondary;
 		background: $colorGrayBackground;
 	}
 	
-	@include medium {
-		margin-bottom: 330px;		
-	}
 }

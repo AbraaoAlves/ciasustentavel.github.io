@@ -6,7 +6,7 @@
 
 @mixin bkg($num){
 	&.bkg#{$num} {
-		background-image: url(../images/slide/bkg#{$num}.jpg)
+		background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)), url(../images/slide/bkg#{$num}.jpg)
 	}
 }
 
@@ -44,7 +44,6 @@
 	background-size: cover;
 	background-position: left top;			
 	
-	@include bkg(1);
 	@include bkg(2);
 	@include bkg(3);
 }

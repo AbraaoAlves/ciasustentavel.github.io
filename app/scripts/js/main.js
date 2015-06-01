@@ -138,7 +138,7 @@ Cards.init();
 (function () {
     'use strict';
     var querySelector = document.querySelector.bind(document);
-    var navdrawerContainer = querySelector('.navdrawer-container');
+    var navdrawerContainer = querySelector('nav');
     var body = document.body;
     var appbarElement = querySelector('.app-bar');
     var menuBtn = querySelector('.menu');

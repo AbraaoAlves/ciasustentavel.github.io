@@ -21,26 +21,27 @@ html(lang='pt-br')
     
     header.app-bar.promote-layer
       .app-bar-container
-        h1.logo
-          | Cia.
-          strong Sustentavél
+        a(href='http://localhost:3000/', title='CiaSustentavel', class='site-title logo')
+          img(src='images/logo.png', alt='Logo')
+        nav.navdrawer-container
+          ul
+            li
+              a(href='#home') Inicio
+            li
+              a(href='#sobre') Sobre
+            li
+              a(href='#depoimentos') Depoimentos
+            li
+              a(href='#time') Time
+            li
+              a(href='#contato') Contato
         section.app-bar-actions
           // e.g <button><i class="icon icon-star"></i></button>
         button.menu.menu-open
           img(src='images/hamburger.svg', alt='Menu')
         // Put App Bar Buttons Here
-    nav.navdrawer-container.promote-layer
-      ul
-        li
-          a(href='#home') Inicio
-        li
-          a(href='#about') Sobre
-        li
-          a(href='#services') Serviços
-        li
-          a(href='#contact') Contato
-        li
-          a(href='styleguide.html') Style Guide
+      .sociais-contats
+        
     main
       section.index
         h1
@@ -49,18 +50,21 @@ html(lang='pt-br')
         h4 Mais do que consultoria e inovação. CiaSustentavél trabalha com parceria
         a.button--secondary-variation(href='/#about') Sobre nós
       
-      section.testimonials
-        include ./views/testimonials.jade
+      section.about
+        a(name='sobre')
+        include ./views/about.jade
         
+      section.testimonials
+        a(name='depoimentos')
+        include ./views/testimonials.jade
+      section.team
+        a(name='time')
+        include ./views/team.jade
+          
     footer.clear
-      hr
-      a.logo(href='')
-        img(src='', alt='')
-      ul.social
-        li
-        li
-        li
-        li
+      a(name='contact')
+      include ./views/about.jade
+      
     script(src='scripts/js/thirdparty.js')
     script(src='scripts/js/main.js')
 
