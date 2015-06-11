@@ -59,7 +59,6 @@ section.testimonials {
 	line-height: 1.5;
 	background: darken(white, 5);
 	color: $grey;
-
 	.view {
 		@extend %connections;
 	}
@@ -71,28 +70,33 @@ section.testimonials {
 			display: flex;
 		    flex-flow: row wrap;
 			justify-content: space-between;
+		    
+			@include wide {
+				padding-bottom: 64px; 
+		    }
 		}
 		
 		&__item {
-			margin: 0 0 $space / 2;
-			padding: $space;
-			border-top: 4px solid $green;
-			box-shadow: 0 1px 3px rgba(black,.12), 0 1px 2px rgba(black,0.24);
-			background: white;
-			cursor: pointer;
-			transition: $ease;
-			
-			position: relative;
-			flex: 0 0 98%;
-		 	
-		 	@include medium {
-		      flex: 0 0 48%;
-		    }
-		    @include wide {
-		      flex: 0 0 24%;
-		    }
-			
-			@extend %cardItemColors;		
+		  margin: 0 0 $space / 2;
+		  padding: $space;
+		  border-top: 4px solid $green;
+		  box-shadow: 0 1px 3px rgba(black,.12), 0 1px 2px rgba(black,0.24);
+		  background: white;
+		  cursor: pointer;
+		  transition: $ease;
+		  
+		  position: relative;
+		  flex: 0 0 98%;
+		   
+		  @include medium {
+	        flex: 0 0 48%;
+	      }
+		  @include wide {
+		    margin: 0 0 $space;
+		    flex: 0 0 24%;
+		  }
+		  
+		  @extend %cardItemColors;		
 		}
 		&__info {
 			display: flex;
@@ -153,9 +157,11 @@ section.testimonials {
 			}
 			
 			&.active {
-				transform: scaleY(1) translate(-50%, -50%);
+				position: relative;
+				margin-bottom: 20px;
+				transform: scaleY(1) translate(-50%, 0%);
 				@include medium{
-					transform: scaleX(1) translate(-50%, -50%);
+					transform: scaleX(1) translate(-50%, 0%);
 				}	
 				
 				visibility: visible;
@@ -189,7 +195,7 @@ section.testimonials {
 				padding: 0 $space;
 				background-color: $grey;
 				overflow-y: auto;
-				margin-bottom: -15px; 
+				//margin-bottom: -15px; 
 				
 				@include medium {
 					text-align: right;
@@ -201,7 +207,7 @@ section.testimonials {
 				display: flex;
 				align-items: center;
 				justify-content: center;
-				background: $greenLigth;
+				background: lighten($greenLigth, 20);
 				overflow: hidden;
 				
 				@include medium {
@@ -210,9 +216,9 @@ section.testimonials {
 				}
 				
 				svg {
-					position: fixed;
-					top: $space;
-					right: $space;
+					position: absolute;
+					top: 0;
+					right: 0;
 					fill: rgba(black, 0.4);
 					width: 45px;
 					cursor: pointer;

@@ -5,6 +5,7 @@ var Cards = (function () {
     var vw = view.innerWidth();
     var vh = view.innerHeight();
     var vo = view.offset();
+    var list = $('.card__list');
     var card = $('.card__item');
     var cardfull = $('.card__full');
     var cardfulltop = cardfull.find('.card__full-top');
@@ -14,38 +15,55 @@ var Cards = (function () {
     var cardhandle = cardfull.find('.card__full-handle');
     var cardinfo = cardfull.find('.card__full-info');
     var w = $(window);
+    var body = $('body, html');
+    var title = $('.subsection-title');
     var moveCard = function () {
         var self = $(this);
         var selfIndex = self.index();
         var selfO = self.offset();
-        var ty = w.innerHeight() / 2 - selfO.top - 4;
+        var ty = selfO.top - title.offset().top;
+        //var ty = title.offset().top-self.offset().top;
         var color = self.css('border-top-color');
         //		cardfulltop.css('background-color', color);
         //		cardhandle.css('color', color);
         updateData(selfIndex, self.data('name'));
-        setTimeout(function () { return cardfull.css('height', w.outerHeight()) && cardfull.addClass('active'); }, 500);
-        //TODO: move center
-        //		self.css({
-        //			'transform': 'translateY(' + ty + 'px)'
-        //		});
-        //				
-        //		self.on('transitionend', function() {
-        //			cardfull.addClass('active');
-        //			self.off('transitionend');
-        //		});
+        // setTimeout(() => {
+        // 	if (cardfull.css('height', w.outerHeight())) {
+        // 		cardfull.addClass('active');
+        // 		list.hide();
+        // 	}
+        // }, 500);
+        //		TODO: move center
+        self.addClass('active-card');
+        //		card.filter(':not(.active-card)').each((i, item) => $(item).hide());
+        // self.css({
+        // 	'transform': 'translateY(' + -ty + 'px)'
+        // });
+        body.animate({ scrollTop: title.offset().top }, 500, function () {
+            !cardfull.hasClass('active') && cardfull.addClass('active');
+            list.is(':visible') && list.hide();
+        });
+        // self.on('transitionend', () => {
+        // 	!cardfull.hasClass('active') && cardfull.addClass('active');
+        // 	list.is(':visible') && list.hide();
+        // 	
+        // 	self.off('transitionend');
+        // });
         return false;
     };
     var closeCard = function () {
+        list.show();
         cardfull.removeClass('active');
-        cardnum.hide();
-        cardinfo.hide();
-        cardhandle.hide();
+        [cardnum, cardinfo, cardhandle].forEach(function (item) { return item.hide(); });
         cardfull.on('transitionend', function () {
-            card.removeAttr('style');
-            cardnum.show();
-            cardinfo.show();
-            cardhandle.show();
+            //card.removeAttr('style');
+            [cardnum, cardinfo, cardhandle].forEach(function (item) { return item.show(); });
             cardfull.off('transitionend');
+            setTimeout(function () {
+                var activateCard = card.filter('.active-card');
+                body.animate({ scrollTop: activateCard.offset().top }, 500);
+                card.filter('.active-card').removeClass('active-card');
+            }, 100);
         });
     };
     var updateData = function (index, name) {
@@ -165,6 +183,17 @@ Cards.init();
 
 /// <reference path="../typings/tsd.d.ts" />
 $(function () {
+    var body = $('body, html');
+    $('a[href^=#]').on('click', function (e) {
+        e.preventDefault();
+        var targetName = $(this).attr('href').replace('#', '');
+        var targetEl = $('a[name=' + targetName + ']');
+        body.animate({ scrollTop: targetEl.offset().top });
+    });
+});
+
+/// <reference path="../typings/tsd.d.ts" />
+$(function () {
     'use strict';
     $('.flexslider').flexslider({
         selector: '.slides > div',
@@ -172,5 +201,67 @@ $(function () {
         controlNav: false
     });
 });
+
+/// <reference path="../typings/tsd.d.ts" />
+var Shapes = (function () {
+    var nav = $('.section__nav');
+    var link = $('.section__nav-link');
+    var section = $('.section');
+    var svg = $('.section__nav-link > svg');
+    var body = $('body, html');
+    var toggleSection = function (e) {
+        e.preventDefault();
+        var i = $(this).parents('li').index();
+        link.removeClass('active');
+        svg.removeAttr('style');
+        $(this).addClass('active');
+        // section.css({
+        // 	'transform': 'translateY(-' + i + '00%)',
+        // 	'-webkit-transform': 'translateY(-' + i + '00%)'
+        // });
+        return false;
+    };
+    var toggleSpace = function () {
+        // 		if ($(this).parent().hasClass('active')) {
+        // 			link.removeClass('active');
+        // 			section.css('opacity', 0);
+        // 
+        // 			section.on('transitionend', function() {
+        // 				section.css({
+        // 					'transform': 'translateY(-400%)',
+        // 					'-webkit-transform': 'translateY(-400%)',
+        // 				});
+        // 				section.on('transitionend', function() {
+        // 					section.css('opacity', '1');
+        // 					section.off('transitionend');
+        // 				});
+        // 			});
+        // 
+        // 			return false;
+        // 		}
+    };
+    var isTeamArea = function () {
+        var heightPrevius = $('header').height();
+        for (var index = 0; index < 3; index++) {
+            heightPrevius += $('main').find('section').eq(index).height();
+        }
+        var heightNext = heightPrevius + $('main section:eq(4)').height();
+        return body.scrollTop() >= heightPrevius || body.scrollTop() < heightNext;
+    };
+    var scrollBehavior = function (e) {
+        nav.toggleClass('fixed', isTeamArea());
+    };
+    var bindActions = function () {
+        link.on('click', toggleSection);
+        body.on('scroll', scrollBehavior);
+    };
+    var init = function () {
+        bindActions();
+    };
+    return {
+        init: init
+    };
+}());
+Shapes.init();
 
 //# sourceMappingURL=main.js.map

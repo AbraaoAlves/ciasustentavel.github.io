@@ -57,7 +57,8 @@
         <nav class="navdrawer-container">
           <ul>
             <li><a href="#home">Inicio</a></li>
-            <li><a href="#sobre">Sobre</a></li>
+            <!-- li// a(href='#sobre') Sobre
+            -->
             <li><a href="#depoimentos">Depoimentos</a></li>
             <li><a href="#time">Time</a></li>
             <li><a href="#contato">Contato</a></li>
@@ -66,7 +67,7 @@
         <section class="app-bar-actions">
           <!-- e.g <button><i class="icon icon-star"></i></button>-->
         </section>
-        <button class="menu menu-open"><img src="images/hamburger.svg" alt="Menu"></button>
+        <button role="button" aria-label="Navegação" data-navicon="button" class="menu menu-open icon-menu navicon navicon-x"><span class="navicon__lines"> </span></button>
         <!-- Put App Bar Buttons Here-->
       </div>
       <div class="sociais-contats"></div>
@@ -256,7 +257,43 @@
           </div>
         </div>
       </section>
-      <section class="team"><a name="time"></a></section>
+      <section class="team"><a name="time"></a>
+        <nav class="section__nav">
+          <ul class="section__nav-list">
+            <li class="section__nav-item"><a href="#christie" class="section__nav-link active">
+                <svg x="0" y="0" width="200" height="200" viewbox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve">
+                  <circle></circle>
+                  <path d="M199 99.5c0 55-44.5 99.5-99.5 99.5 -55 0-99.5-44.5-99.5-99.5C0 44.5 44.5 0 99.5 0 154.5 0 199 44.5 199 99.5z"></path>
+                </svg></a></li>
+            <li class="section__nav-item"><a href="#abraao" class="section__nav-link">
+                <svg x="0" y="0" width="200" height="200" viewbox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve">
+                  <path d="M199 99.5c0 55-44.5 99.5-99.5 99.5 -55 0-99.5-44.5-99.5-99.5C0 44.5 44.5 0 99.5 0 154.5 0 199 44.5 199 99.5z"></path>
+                </svg></a></li>
+            <li class="section__nav-item"><a href="#rebecca" class="section__nav-link">
+                <svg x="0" y="0" width="200" height="200" viewbox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve">
+                  <path d="M199 99.5c0 55-44.5 99.5-99.5 99.5 -55 0-99.5-44.5-99.5-99.5C0 44.5 44.5 0 99.5 0 154.5 0 199 44.5 199 99.5z"></path>
+                </svg></a></li>
+          </ul>
+        </nav>
+        <section class="section">
+          <div class="section__wrapper"><a name="christie"></a>
+            <h1 class="section__title">Christie</h1>
+            <p>A circle is a simple shape in Euclidean geometry. It is the set of all points in a plane that are at a given distance from a given point.</p>
+          </div>
+        </section>
+        <section class="section">
+          <div class="section__wrapper"><a name="abraao"></a>
+            <h1 class="section__title">Abraão </h1>
+            <p>A triangle is a polygon with three edges and three vertices. It is one of the basic shapes in geometry.</p>
+          </div>
+        </section>
+        <section class="section">
+          <div class="section__wrapper"><a name="rebecca"></a>
+            <h1 class="section__title">Rebecca</h1>
+            <p>In geometry, a square is a regular quadrilateral, which means that it has four equal sides and four equal angles (90-degree angles, or right angles).</p>
+          </div>
+        </section>
+      </section>
     </main>
     <footer class="clear"><a name="contact"></a></footer>
     <script src="scripts/js/thirdparty.js"></script>

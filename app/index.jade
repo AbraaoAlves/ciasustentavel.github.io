@@ -27,8 +27,8 @@ html(lang='pt-br')
           ul
             li
               a(href='#home') Inicio
-            li
-              a(href='#sobre') Sobre
+            // li
+              // a(href='#sobre') Sobre
             li
               a(href='#depoimentos') Depoimentos
             li
@@ -37,8 +37,8 @@ html(lang='pt-br')
               a(href='#contato') Contato
         section.app-bar-actions
           // e.g <button><i class="icon icon-star"></i></button>
-        button.menu.menu-open
-          img(src='images/hamburger.svg', alt='Menu')
+        button.menu.menu-open.icon-menu.navicon.navicon-x(role='button', aria-label='Navegação', data-navicon='button')
+          span.navicon__lines 
         // Put App Bar Buttons Here
       .sociais-contats
         

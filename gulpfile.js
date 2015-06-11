@@ -135,7 +135,7 @@ gulp.task('serve', ['jade','styles','script-compile:dev'], function () {
 });
 
 // Build and serve the output from the dist build
-gulp.task('serve:dist', ['default'], function () {
+gulp.task('serve:dist',  function () {//['default'],
   browserSync.init({
     notify: false,
     logPrefix: 'WSK',
