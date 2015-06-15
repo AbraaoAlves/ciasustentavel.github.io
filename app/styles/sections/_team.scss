@@ -23,22 +23,23 @@ section.team {
 		list-style-type: none;
 	  	margin: 0;
 	  	padding: 0;
+	  	
+	  	li::before{
+	  		content:'';
+	  	}
 	}
 	
 	.section__nav {
-		position:absolute;
-		float: left;
+		position: absolute;
+		//float: left;
 		height: 100vh;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		
-		&.fixed {
-			position: fixed;
-			top:0;
-			left: 0;
-			float: none;
-		}
+		//&.freeze{
+			z-index:2;
+		//}
 		
 		@media (max-width: 720px) {
 		    width: 20vw;

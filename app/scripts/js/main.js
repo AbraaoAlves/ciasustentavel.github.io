@@ -61,6 +61,8 @@ var Cards = (function () {
             cardfull.off('transitionend');
             setTimeout(function () {
                 var activateCard = card.filter('.active-card');
+                if (!activateCard.length)
+                    return;
                 body.animate({ scrollTop: activateCard.offset().top }, 500);
                 card.filter('.active-card').removeClass('active-card');
             }, 100);
@@ -204,17 +206,18 @@ $(function () {
 
 /// <reference path="../typings/tsd.d.ts" />
 var Shapes = (function () {
-    var nav = $('.section__nav');
-    var link = $('.section__nav-link');
-    var section = $('.section');
-    var svg = $('.section__nav-link > svg');
+    var nav = $('.section__nav', '.team');
+    var link = $('.section__nav-link', '.team');
+    var section = $('.section', '.team');
+    var svg = $('.section__nav-link > svg', '.team');
     var body = $('body, html');
     var toggleSection = function (e) {
         e.preventDefault();
-        var i = $(this).parents('li').index();
+        //var i = $(this).parents('li').index();
         link.removeClass('active');
         svg.removeAttr('style');
         $(this).addClass('active');
+        //section.css({ transform: 'translateY()'})
         // section.css({
         // 	'transform': 'translateY(-' + i + '00%)',
         // 	'-webkit-transform': 'translateY(-' + i + '00%)'
@@ -240,20 +243,82 @@ var Shapes = (function () {
         // 			return false;
         // 		}
     };
-    var isTeamArea = function () {
-        var heightPrevius = $('header').height();
-        for (var index = 0; index < 3; index++) {
-            heightPrevius += $('main').find('section').eq(index).height();
-        }
-        var heightNext = heightPrevius + $('main section:eq(4)').height();
-        return body.scrollTop() >= heightPrevius || body.scrollTop() < heightNext;
-    };
+    function debounce(wait, func, immediate) {
+        var timeout;
+        return function () {
+            var context = this, args = arguments;
+            var later = function () {
+                timeout = null;
+                if (!immediate)
+                    func.apply(context, args);
+            };
+            var callNow = immediate && !timeout;
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+            if (callNow)
+                func.apply(context, args);
+        };
+    }
+    ;
     var scrollBehavior = function (e) {
-        nav.toggleClass('fixed', isTeamArea());
+        var y;
+        var pos;
+        var team = $('.team');
+        var teamTop = team.offset().top;
+        var navHei = $(nav).height();
+        var e = teamTop + team.innerHeight();
+        e -= navHei;
+        if (e > teamTop) {
+            var winTop = $(window).scrollTop() + 20;
+            if (winTop >= e) {
+                y = e + 1;
+                pos = 'absolute';
+            }
+            else {
+                if (winTop > teamTop) {
+                    pos = 'fixed';
+                    y = 1;
+                    var sec = $('.section').first();
+                    /*
+                    else
+                    else*/
+                    if (winTop < $('footer').offset().top && winTop > sec.next().offset().top) {
+                        if (winTop >= sec.last().offset().top)
+                            link.removeClass('active').eq(2).addClass('active');
+                        if (winTop >= navHei / 2 + sec.last().offset().top)
+                            link.eq(2).removeClass('active');
+                    }
+                    if (winTop > sec.offset().top) {
+                        if (winTop >= sec.next().offset().top)
+                            link.removeClass('active').eq(1).addClass('active');
+                        if (winTop >= navHei / 2 + sec.next().offset().top)
+                            link.eq(1).removeClass('active');
+                    }
+                    if (winTop < sec.next().offset().top) {
+                        if (winTop >= sec.offset().top)
+                            link.removeClass('active').eq(0).addClass('active');
+                        if (winTop >= navHei / 2 + sec.offset().top)
+                            link.eq(0).removeClass('active');
+                    }
+                    var secTop = $('.section:first').offset().top;
+                    console.log('section:first', secTop);
+                    console.log('winTop', winTop);
+                }
+            }
+        }
+        if (pos && y) {
+            nav.css({ 'top': y - 1, 'position': pos });
+        }
+        else {
+            nav.removeAttr('style');
+        }
     };
     var bindActions = function () {
         link.on('click', toggleSection);
-        body.on('scroll', scrollBehavior);
+        $(window).on('scroll', scrollBehavior);
+        $('.section').on('scroll', function () {
+            console.log('section: ' + $(this).find('a[name]').attr('name'), this);
+        });
     };
     var init = function () {
         bindActions();

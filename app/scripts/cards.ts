@@ -77,6 +77,8 @@ var Cards = (function() {
 
 			setTimeout(function() {
 				var activateCard = card.filter('.active-card');
+				if(!activateCard.length) return;
+				
 				body.animate({scrollTop:activateCard.offset().top}, 500);
 				card.filter('.active-card').removeClass('active-card');
 			}, 100);
