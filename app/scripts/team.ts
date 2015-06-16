@@ -48,7 +48,7 @@ var Shapes = (function() {
 	};
 
 
-	function debounce(wait, func, immediate) {
+	function debounce(wait, func, immediate? = false) {
 		var timeout;
 		return function() {
 			var context = this, args = arguments;
@@ -63,7 +63,7 @@ var Shapes = (function() {
 		};
 	};
 	
-	var scrollBehavior = function(e){
+	var scrollBehavior = function(){
 		var y;
 		var pos;
 		var team = $('.team');
@@ -83,34 +83,28 @@ var Shapes = (function() {
                     
                     var sec = $('.section').first();
 					
-					/*
-					else 	
-					else*/ 
-					if(winTop < $('footer').offset().top && winTop > sec.next().offset().top){
-						if(winTop >= sec.last().offset().top)
-							link.removeClass('active').eq(2).addClass('active');
+					if(winTop < sec.next().next().offset().top && winTop > sec.next().offset().top){
+						if(winTop >= sec.next().next().offset().top)
+							debounce(0,() => link.removeClass('active').eq(2).addClass('active'), true);
 						if (winTop >=  navHei/2 + sec.last().offset().top)
-							link.eq(2).removeClass('active');
+							debounce(0,() => link.eq(2).removeClass('active'), true);
 					}
 					
 					if(winTop > sec.offset().top){
 						if(winTop >= sec.next().offset().top)
-							link.removeClass('active').eq(1).addClass('active');
+							debounce(0,() => link.removeClass('active').eq(1).addClass('active'), true);
 						
 						if (winTop >= navHei/2 + sec.next().offset().top)
-							link.eq(1).removeClass('active');
+							debounce(0,() => link.eq(1).removeClass('active'), true);
 					}
 					
 					if(winTop < sec.next().offset().top){
 						if(winTop >= sec.offset().top)
-							link.removeClass('active').eq(0).addClass('active');
+							debounce(0,() => link.removeClass('active').eq(0).addClass('active'), true);
 						
 						if (winTop >=  navHei/2 + sec.offset().top)
-							link.eq(0).removeClass('active');
+							debounce(0,() => link.eq(0).removeClass('active'), true);
 					}
-					
-					
-					
 					
 					
                     var secTop = $('.section:first').offset().top;

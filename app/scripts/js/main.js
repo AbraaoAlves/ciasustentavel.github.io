@@ -188,9 +188,18 @@ $(function () {
     var body = $('body, html');
     $('a[href^=#]').on('click', function (e) {
         e.preventDefault();
-        var targetName = $(this).attr('href').replace('#', '');
+        var $this = $(this);
+        var targetName = $this.attr('href').replace('#', '');
         var targetEl = $('a[name=' + targetName + ']');
+        var distance = $this.offset().top - targetEl.offset().top;
+        // body.css({
+        // 	transform:'translateY(' +  distance + 'px)',
+        // 	'-ms-transform':'translateY(' +  distance + 'px)',
+        // 	'-webkit-transform':'translateY(' +  distance + 'px)'
+        // });
+        //setTimeout(function() {
         body.animate({ scrollTop: targetEl.offset().top });
+        //}, 1);
     });
 });
 
@@ -244,6 +253,7 @@ var Shapes = (function () {
         // 		}
     };
     function debounce(wait, func, immediate) {
+        if (immediate === void 0) { immediate = false; }
         var timeout;
         return function () {
             var context = this, args = arguments;
@@ -260,7 +270,7 @@ var Shapes = (function () {
         };
     }
     ;
-    var scrollBehavior = function (e) {
+    var scrollBehavior = function () {
         var y;
         var pos;
         var team = $('.team');
@@ -279,26 +289,23 @@ var Shapes = (function () {
                     pos = 'fixed';
                     y = 1;
                     var sec = $('.section').first();
-                    /*
-                    else
-                    else*/
-                    if (winTop < $('footer').offset().top && winTop > sec.next().offset().top) {
-                        if (winTop >= sec.last().offset().top)
-                            link.removeClass('active').eq(2).addClass('active');
+                    if (winTop < sec.next().next().offset().top && winTop > sec.next().offset().top) {
+                        if (winTop >= sec.next().next().offset().top)
+                            debounce(0, function () { return link.removeClass('active').eq(2).addClass('active'); }, true);
                         if (winTop >= navHei / 2 + sec.last().offset().top)
-                            link.eq(2).removeClass('active');
+                            debounce(0, function () { return link.eq(2).removeClass('active'); }, true);
                     }
                     if (winTop > sec.offset().top) {
                         if (winTop >= sec.next().offset().top)
-                            link.removeClass('active').eq(1).addClass('active');
+                            debounce(0, function () { return link.removeClass('active').eq(1).addClass('active'); }, true);
                         if (winTop >= navHei / 2 + sec.next().offset().top)
-                            link.eq(1).removeClass('active');
+                            debounce(0, function () { return link.eq(1).removeClass('active'); }, true);
                     }
                     if (winTop < sec.next().offset().top) {
                         if (winTop >= sec.offset().top)
-                            link.removeClass('active').eq(0).addClass('active');
+                            debounce(0, function () { return link.removeClass('active').eq(0).addClass('active'); }, true);
                         if (winTop >= navHei / 2 + sec.offset().top)
-                            link.eq(0).removeClass('active');
+                            debounce(0, function () { return link.eq(0).removeClass('active'); }, true);
                     }
                     var secTop = $('.section:first').offset().top;
                     console.log('section:first', secTop);

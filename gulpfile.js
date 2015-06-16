@@ -125,11 +125,10 @@ gulp.task('serve', ['jade','styles','script-compile:dev'], function () {
     // Note: this uses an unsigned certificate which on first access
     //       will present a certificate warning in the browser.
     // https: true,
-    server: ['.tmp', 'app'],
-    port: process.env.PORT,
-    host: process.env.IP,
-    online:false
+    server: ['.tmp', 'app']
+    //online:false
   });
+  console.log('teste');
 
   gulp.watch(['app/**/*.{jade,md}'], ['jade', reload]);
   gulp.watch(['app/styles/**/*.{scss,css}'], ['styles', reload]);
@@ -168,3 +167,5 @@ gulp.task('pagespeed', function (cb) {
 
 // Load custom tasks from the `tasks` directory
 try { require('require-dir')('tasks'); } catch (err) { console.error(err); }
+
+
