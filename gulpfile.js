@@ -127,7 +127,8 @@ gulp.task('serve', ['jade','styles','script-compile:dev'], function () {
     // https: true,
     server: ['.tmp', 'app'],
     port: process.env.PORT,
-    host: process.env.IP
+    host: process.env.IP,
+    online:false
   });
 
   gulp.watch(['app/**/*.{jade,md}'], ['jade', reload]);
