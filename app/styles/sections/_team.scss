@@ -3,7 +3,7 @@
 		transform: scale(3.5) translate(49px, -2.3vh -(3.8vh * $num));
 		
 		@include medium {
-			transform: scale(4) translate(6.2vw, 65px -(25px * $num));
+			transform: scale(4) translate(17.2vw, -(22px +(25px * $num) -(2*$num)));
 		}
 		@include wide {
 			transform: scale(3.5) translate(55px, 35px -(15px * $num));
@@ -16,7 +16,6 @@ section.team {
 	line-height: 1.5;
 	overflow: hidden;
 	background: #2694f1;
-	font-family: Roboto;
 	-webkit-font-smoothing: antialiased;
 	
 	ul {
@@ -36,17 +35,15 @@ section.team {
 		display: flex;
 		align-items: center;
 		justify-content: center;
+	    width: 25vw;
+		z-index: 1;
 		
-		//&.freeze{
-			z-index:2;
-		//}
-		
-		@media (max-width: 720px) {
+		@include medium {
 		    width: 20vw;
 		    background: rgba(0,0,0,0.2);
 		}
-		@media (max-width: 500px) {
-		    width: 25vw;
+		
+		@include small-only {
 		}
 		
 		&-item {
