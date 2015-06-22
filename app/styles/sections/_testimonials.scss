@@ -1,12 +1,7 @@
 $space: 1.5rem;
 $grey: lighten(black, 25);
-$blue: #5171C3;
-$orange: #DE660F;
 $green: $colorLayoutsSecondary;
 $greenLigth: lighten($green, 10%);
-$yellow: #BDB235;
-$tan: #AA9E5C;
-$purple: #3E5EB3;
 $ease: all .8s cubic-bezier(0.23, 1, 0.32, 1);
 
 %cardItemColors {
