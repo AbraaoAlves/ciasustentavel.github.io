@@ -1,23 +1,28 @@
 @mixin transform-child($num) { 
 	&:nth-child(#{$num}) .section__nav-link.active > svg {
-		transform: scale(3.5) translate(49px, -2.3vh -(3.8vh * $num));
+		transform: scale(3.5)  translate(135%, -(2.6vh + (5vh * $num)));
+		
+		// @include landscape {
+		// 	transform: scale(3.5)  translate(2rem, -(2.6vh + (5vh * $num)));
+		// }
 		
 		@include medium {
 			transform: scale(4) translate(17.2vw, -(22px +(25px * $num) -(2*$num)));
 		}
+		
 		@include wide {
 			transform: scale(3.5) translate(55px, 35px -(15px * $num));
 		}
 	}
-}
+}	
 
 section.team {
 
 	line-height: 1.5;
-	overflow: hidden;
-	background: #2694f1;
-	-webkit-font-smoothing: antialiased;
-	
+	// overflow: hidden;
+	// background: #2694f1;
+	// -webkit-font-smoothing: antialiased;
+	// 
 	ul {
 		list-style-type: none;
 	  	margin: 0;
@@ -39,11 +44,13 @@ section.team {
 		z-index: 1;
 		
 		@include medium {
-		    width: 20vw;
-		    background: rgba(0,0,0,0.2);
+		    // width: 20vw;
+		    // background: rgba(0,0,0,0.2);
 		}
 		
 		@include small-only {
+		    width: 20vw;
+		    background: rgba(0,0,0,0.2);
 		}
 		
 		&-item {
@@ -67,19 +74,18 @@ section.team {
 			
 			svg {
 				will-change: transform, opacity, stroke;
-				width: 70px;
+				width: 55px;
 				height: 70px;
-				margin: 0 4vw;
-				fill: #00ffcf;
+				margin: 0;
+				fill: $colorLayoutsSecondary;
 				opacity: 0.5;
 				padding: 10px;
 				transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
 				
-				@media (max-width: 500px) {
-				    width: 55px;
-				    height: 55px;
-				}
-				
+				// @include small-only{
+				//     width: 55px;
+				//     height: 55px;
+				// }
 			}
 		}
 	}
@@ -88,45 +94,49 @@ section.team {
 		will-change: transform;
 		height: 120vh;
 		display: flex;
-		align-items: center;
+		//align-items: center;
 		justify-content: center;
 		transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
 
-		//@media (max-width: 720px) {
-		//	align-items: flex-end;
+
+		//@include medium-only{
+			align-items: flex-end;
 		//}
 		
 		&__wrapper{
-			padding: 0 4vw;
-	  		margin-left: 50%;			
-			
-			@media (max-width: 720px) {
+			padding: 0 2vw 10vw 0;
+		    margin-left: 25vw;
+	  		
+			@include medium {
 			    margin-left: 20vw;
 			    margin-bottom: 50px;
 			}
-			@media (max-width: 500px) {
-			    margin-left: 30vw;
+			@include wide {
+				margin-left: 50%;			
 			}
 		}
 		&__title{
-			color: #00ffcf;
+			color: $colorLayoutsSecondary;
 			font-weight: 300;
-			margin: 0 0 25px 0;
+			margin: 5% 0 5px 0;
+			font-size: 3em;
+			max-width: 236px;
 			
-			@media (max-width: 720px) {
-			    margin: 0 0 13.5px 0;
-			  }
+			+h6 {
+				margin-bottom: 10%; 
+			}
 		}
 		
+		
 		p{
-			font-size: 20px;
+			font-size: 3vh;
 			margin: 0;
 			color: rgba(0,0,0,0.8);
 			max-width: 640px;
 		
-			@media (max-width: 720px) {
-				font-size: 16px;
-			}	
+			@include medium {
+				font-size: 1.2em;
+			}
 		}
 	}
 }

@@ -2,8 +2,8 @@ $space: 1.5rem;
 $grey: lighten(black, 25);
 $blue: #5171C3;
 $orange: #DE660F;
-$green: #77A02F;
-$greenLigth: $green;//lighten($green, 10%);
+$green: $colorLayoutsSecondary;
+$greenLigth: lighten($green, 10%);
 $yellow: #BDB235;
 $tan: #AA9E5C;
 $purple: #3E5EB3;
@@ -207,7 +207,7 @@ section.testimonials {
 				display: flex;
 				align-items: center;
 				justify-content: center;
-				background: lighten($greenLigth, 20);
+				background: $greenLigth;
 				overflow: hidden;
 				
 				@include medium {

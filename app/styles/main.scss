@@ -27,11 +27,14 @@ body {
 
 body {
   position: relative;
-  font-family: 'Roboto', Helvetica, Arial, sans-serif;
+  font-family: Roboto, Helvetica, Arial, sans-serif;
   font-weight: 300;
   background-color: #fff;
   box-sizing: border-box;
-  min-height: 100%;
+  min-height: 100%;  
+  
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 body.open {

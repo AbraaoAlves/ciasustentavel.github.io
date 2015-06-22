@@ -48,7 +48,7 @@ var Shapes = (function() {
 	};
 
 
-	function debounce(wait, func, immediate? = false) {
+	function debounce(wait, func, immediate = false) {
 		var timeout;
 		return function() {
 			var context = this, args = arguments;
