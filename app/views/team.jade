@@ -1,18 +1,17 @@
+  
+mixin member(name, imageUrl)
+  li.section__nav-item
+    a.section__nav-link.active(href='#'+name)
+      svg(x='0', y='0', width='200', height='200', viewbox='0 0 200 200', enable-background='new 0 0 200 200', xml:space='preserve')
+        clipPath(id="circle")
+          circle(cx="50%", cy="50%", r="45%")
+        circle(cx="50%", cy="50%", r="50%")
+        image(x="0", y="0", xlink:href=imageUrl, height="100%", width="100%", clip-path="url(#circle)")  
+      
 nav.section__nav
   ul.section__nav-list
-    li.section__nav-item
-      a.section__nav-link.active(href='#christie')
-        svg(x='0', y='0', width='200', height='200', viewbox='0 0 200 200', enable-background='new 0 0 200 200', xml:space='preserve')
-          circle()
-          path(d='M199 99.5c0 55-44.5 99.5-99.5 99.5 -55 0-99.5-44.5-99.5-99.5C0 44.5 44.5 0 99.5 0 154.5 0 199 44.5 199 99.5z')
-    li.section__nav-item
-      a.section__nav-link(href='#abraao')
-        svg(x='0', y='0', width='200', height='200', viewbox='0 0 200 200', enable-background='new 0 0 200 200', xml:space='preserve')
-          path(d='M199 99.5c0 55-44.5 99.5-99.5 99.5 -55 0-99.5-44.5-99.5-99.5C0 44.5 44.5 0 99.5 0 154.5 0 199 44.5 199 99.5z')
-    li.section__nav-item
-      a.section__nav-link(href='#rebecca')
-        svg(x='0', y='0', width='200', height='200', viewbox='0 0 200 200', enable-background='new 0 0 200 200', xml:space='preserve')
-          path(d='M199 99.5c0 55-44.5 99.5-99.5 99.5 -55 0-99.5-44.5-99.5-99.5C0 44.5 44.5 0 99.5 0 154.5 0 199 44.5 199 99.5z')
+    each val, key in {'christie':'images/team/christie_bechara.jpg','abraao':'images/team/abraao_alves.jpg','rebecca':'images/team/rebecca_castro.jpg'}
+      +member(key, val) 
 
 a(name='christie')
 section.section(style='background-color:#F6F6F6;')
