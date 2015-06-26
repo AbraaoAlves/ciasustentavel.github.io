@@ -1,21 +1,18 @@
 @mixin transform-child($num) { 
 	&:nth-child(#{$num}) .section__nav-link.active svg {
-		transform:  scale(3.5)  translate(125%, -(2vh + (5vh * $num))); 
+		//transform:  scale(1)  translate(125%, -(2vh + (20vh * $num))); 
 		// @include landscape {
 		// 	transform: scale(3.5)  translate(2rem, -(2.6vh + (5vh * $num)));
 		// }
 		
-		@include medium {
-			transform: scale(4) translate(17.2vw, -(22px +(25px * $num) -(2*$num)));
-		}
-		
-		@include wide {
-			transform: scale(3.5) translate(55px, 35px -(15px * $num));
-		}
-		
-		&:hover{
-			transform:  scale(3.5)  translate(125%, -(2vh + (5vh * $num))) rotate(.00001deg) skew(0deg); 
-		}
+		// @include medium {
+		// 	transform: scale(4) translate(17.2vw, -(22px +(25px * $num) -(2*$num)));
+		// }
+		// 
+		// @include wide {
+		// 	transform: scale(3.5) translate(55px, 35px -(15px * $num));
+		// }
+		@content;
 	}
 }	
 
@@ -44,49 +41,72 @@ section.team {
 		display: flex;
 		align-items: center;
 		justify-content: center;
-	    width: 25vw;
+	    align-content:space-around;
+		width: 25vw;
 		z-index: 1;
 		
+	    width: 20vw;
+	    background: rgba(0,0,0,0.2);
+
 		@include medium {
 		    // width: 20vw;
 		    // background: rgba(0,0,0,0.2);
 		}
 		
 		@include small-only {
-		    width: 20vw;
-		    background: rgba(0,0,0,0.2);
 		}
 		
 		&-item {
 	  		margin: 10px 0;
+			padding-left: 0;
 			
 			.section__nav-link.active > svg {
-				//opacity: 1;
+				opacity: .5;
 				z-index: -1;
 				stroke-width: 20px;
 				stroke: rgba(255,255,255,0.3);
+				fill:$colorLayoutsSecondary;
 			}
 			
-			@include transform-child(1);
-			@include transform-child(2);
-			@include transform-child(3);
-			@include transform-child(4);
+			@include transform-child(1){
+				transform:  scale(1)  translate(65vw, -20vh); 
+				
+				@include media-query-interval(400px, 450px){ 
+					//transform:  scale(1)  translate(75vw, -80%); 
+				}
+			}
+			
+			@include transform-child(2){
+				transform:  scale(1)  translate(65vw, -40vh); 
+				
+				@include media-query-interval(400px, 450px){ 
+					transform:  scale(1)  translate(65vw, -36vh); 
+				}
+			}
+			@include transform-child(3){
+				transform:  scale(1)  translate(65vw, -64vh); 
+				@include media-query-interval(330px, 450px){ 
+					transform:  scale(1)  translate(65vw, -56vh); 
+				}
+			}
 		}
 		
 		&-link{
 			display: block;
-  			transform: none;		
+			height: 100px; 
 			
 			svg {
-				will-change: transform, stroke;
-				width: 55px;
-				height: 70px;
+				will-change: transform, stroke, opacity;
+				width: 175px;
+				height: 175px;
 				margin: 0;
-				fill: $colorLayoutsSecondary;
-				opacity: 0.5;
-				padding: 10px;
+				fill: white;
+				opacity: 1;
+				padding: 10px 0;
 				transition: all 0.5s ease;//cubic-bezier(0.23, 1, 0.32, 1)
+				transform:  scale(0.3) translate(-105%, -100%);
 				-webkit-backface-visibility: hidden;
+				
 				// @include small-only{
 				//     width: 55px;
 				//     height: 55px;

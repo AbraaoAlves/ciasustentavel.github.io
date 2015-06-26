@@ -88,7 +88,10 @@
 
 
 /*==========  MIXINS  ==========*/
-
+  @mixin media-query-interval($init, $end){
+    @media only screen and (min-width: $init) and (max-width: $end) { @content; }
+  }
+  
   @mixin media-query($media-query) {
     @if $media-query == small {
       @media only screen and (max-width: $medium - 1) { @content; }

@@ -64,8 +64,7 @@ gulp.task('styles', function () {
     //.pipe($.changed('.tmp/styles', {extension: '.css'}))
     .pipe($.sass({
       precision: 10,
-      includePaths:['app/styles/'],
-      onError: console.error.bind(console, 'Sass error:')
+      includePaths:['app/styles/']
     }))
     .pipe($.autoprefixer({browsers: AUTOPREFIXER_BROWSERS}))
     .pipe($.sourcemaps.write())
