@@ -124,8 +124,8 @@ gulp.task('serve', ['jade','styles','script-compile:dev'], function () {
     // Note: this uses an unsigned certificate which on first access
     //       will present a certificate warning in the browser.
     // https: true,
-    server: ['.tmp', 'app']
-    //online:false
+    server: ['.tmp', 'app'],
+    online:false
   });
   console.log('teste');
 

@@ -1,6 +1,5 @@
 /// <reference path="../typings/tsd.d.ts" />
 
-
 var Cards = (function() {
 	'use strict';
 

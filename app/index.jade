@@ -15,7 +15,8 @@ html(lang='pt-br')
     
     // Page styles
     link(rel='stylesheet', href='styles/main.css')
-    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js')
+    script(src='scripts/js/jquery.min.js')
+    //script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js')
   body
     include ./views/imgSlide.jade
     
@@ -47,7 +48,7 @@ html(lang='pt-br')
         h1
           | Soluções
           strong  Colaborativas
-        h4 Mais do que consultoria e inovação. CiaSustentavél trabalha com parceria
+        h4 Uma empresa hub de acessoria de projetos sustentaveis.
         a.button--secondary-variation(href='/#about') Sobre nós
       
       section.about
@@ -56,7 +57,7 @@ html(lang='pt-br')
         
       section.testimonials
         a(name='depoimentos')
-        //include ./views/testimonials.jade
+        include ./views/testimonials.jade
       section.team
         a(name='time')
         include ./views/team.jade
