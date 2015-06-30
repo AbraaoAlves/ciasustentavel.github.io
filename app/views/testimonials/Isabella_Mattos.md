@@ -1,3 +1,0 @@
-"Tive a oportunidade de Trabalhar com a Christie Bechara no desenvolvimento de projetos socioambientais para as comunidades presentes em Unidades de Conservação do Estado do Ceará gerenciadas pelo CONPAM. Trabalhei com uma profissional competente, ética e totalmente comprometida com o resultado do trabalho e com o público alvo. A Christie Bechara registrou seu profissionalismo no desenvolvimento e efetivação dos projetos de cunho socioambiental que implementamos."
-
----

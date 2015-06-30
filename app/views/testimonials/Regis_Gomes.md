@@ -1,5 +1,0 @@
-"Trabalhei com a Christie no Grupo EDP Energias do Brasil onde desenvolvemos alguns projetos em conjunto, com destaque para a implantação dos processos de sustentabilidade e responsabilidade social.   
-Como profissional de Facilities and Property Management os processos voltados para a sustentabilidade e responsabilidade socioambiental são fundamentais para o sucesso da minha área de atuação. Com a implantação destes processos foi possível obter uma melhor performance operacional e adequar as instalações físicas as mais altas exigências técnicas em termos de normas e certificações.   
-O coaching nos fornece todo o apoio e suporte técnico necessário para que possamos atingir nossos objetivos de maneira consistente e ágil. A Christie Bechara desenvolve seu trabalho com responsabilidade, comprometimento e apresenta um conhecimento técnico consistente."
-
----

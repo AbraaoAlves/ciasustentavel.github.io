@@ -1,3 +1,0 @@
-“Tive a oportunidade de trabalhar com Christie Bechara no desenvolvimento de um projeto conjunto entre as áreas de Sustentabilidade e Comunicação de uma empresa no Ceará. Christie é uma profissional extremamente comprometida, com foco no resultado e com uma visão global de sustentabilidade. É essa sua visão global que ajuda as empresas e as pessoas a entenderem a sustentabilidade de forma ampla, indo além do mero conceito de ambientalmente correto.”
-
----

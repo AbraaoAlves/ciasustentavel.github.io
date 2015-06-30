@@ -1,7 +1,0 @@
-"Conheci Chris em um evento sobre RH e Inclusão há alguns anos atrás. Na época eu era responsável pela Gerência de Diversidade da Diretoria de Recursos Humanos da MAPFRE Seguros. Trocamos algumas idéias no coffee break do evento e alguns poucos minutos nossa relação criou afinidade. Desde então, o vínculo se fortaleceu, graças a interatividade permitida pela globalização e internet, de forma recíproca, um acompanha a atuação do outro em áreas distintas, porém muito parecidas ideologicamente.
-
-Hoje estou Presidente da Ong Movimento SuperAção, organização que atua em defesa dos direitos das pessoas com deficiência e estou muito feliz com a notícia da implantação da Cia. Sustentável. Existe uma frase de uma música que diz - _Há os que não sabem o que acontece, os que sabem o que acontece e os que fazem acontecer..._ Chris Bechara, na minha opinião, se encaixa na categoria dos criadores de idéias que podem mudar o mundo. Estou otimista e vibrando positivamente para que essa nova empreitada, chamada Cia. Sustentável, seja cada vez mais bem sucedida e enquanto isso, junto com essa parceira que se tornou uma amiga, vamos articulando os planos de atuação da Ong Movimento SuperAção em Fortaleza. Em breve!
-
-Bons momentos"
-
----
